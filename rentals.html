@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Furnished homes to rent — Nestly Homes</title>
+<meta name="description" content="Browse fully-furnished, professionally-managed homes to rent across India — Bengaluru, Hyderabad, Chennai, Pune and Mumbai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   Nestly Homes — Design System
+   Managed home rentals: guaranteed rent for owners,
+   fully-furnished homes for tenants.
+   Fraunces (serif, warm/editorial) headings, Inter for UI.
+=========================================================== */
+
+:root {
+  --color-primary: #E2725B;
+  --color-primary-dark: #C85A45;
+  --color-primary-light: #F4A98C;
+  --color-primary-tint: #FCEAE4;
+  --color-secondary: #1F3D3A;
+  --color-secondary-light: #33605B;
+  --color-accent: #E9B44C;
+  --color-accent-tint: #FBF3E1;
+  --color-bg: #FAF7F2;
+  --color-surface: #FFFFFF;
+  --color-text: #24211F;
+  --color-text-muted: #6B625C;
+  --color-border: #E8E1D9;
+  --color-success: #2E7D57;
+  --color-success-tint: #E6F2EC;
+  --color-danger: #C1442E;
+  --color-danger-tint: #FBEAE6;
+
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3.25rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --shadow-sm: 0 1px 3px rgba(36, 33, 31, 0.08);
+  --shadow-md: 0 6px 20px rgba(36, 33, 31, 0.10);
+  --shadow-lg: 0 16px 40px rgba(36, 33, 31, 0.14);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 var(--space-3);
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+p { margin: 0 0 var(--space-4); color: var(--color-text-muted); }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-5); }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--space-5); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--color-secondary); color: #fff;
+  padding: var(--space-2) var(--space-4); z-index: 100;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Navigation ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; }
+.brand {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 700;
+  color: var(--color-secondary);
+}
+.brand svg { color: var(--color-primary); }
+.brand small { font-family: var(--font-body); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-muted); display: block; margin-top: -2px; }
+.nav-links { display: flex; gap: var(--space-6); list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  font-size: var(--text-sm); font-weight: 500; color: var(--color-text);
+  padding: var(--space-2) 0; border-bottom: 2px solid transparent;
+  transition: color var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+  min-height: 44px; display: flex; align-items: center;
+}
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--color-primary-dark); border-color: var(--color-primary); }
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+.nav-toggle { display: none; background: none; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-2); min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  font-family: var(--font-body); font-weight: 600; font-size: var(--text-sm);
+  min-height: 44px; padding: 0 var(--space-5);
+  border-radius: var(--radius-full); border: 1px solid transparent; cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--color-primary); color: #fff; box-shadow: var(--shadow-sm); }
+.btn-primary:hover { background: var(--color-primary-dark); box-shadow: var(--shadow-md); }
+.btn-secondary { background: var(--color-secondary); color: #fff; }
+.btn-secondary:hover { background: var(--color-secondary-light); }
+.btn-outline { background: transparent; color: var(--color-text); border-color: var(--color-border); }
+.btn-outline:hover { border-color: var(--color-primary); color: var(--color-primary-dark); }
+.btn-ghost { background: transparent; color: var(--color-text); }
+.btn-ghost:hover { background: var(--color-primary-tint); }
+.btn-block { width: 100%; }
+.btn-sm { min-height: 36px; padding: 0 var(--space-4); font-size: var(--text-xs); }
+.btn-lg { min-height: 52px; padding: 0 var(--space-6); font-size: var(--text-base); }
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; border-radius: var(--radius-full);
+  border: 1px solid var(--color-border); background: var(--color-surface); cursor: pointer;
+  transition: border-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
+}
+.icon-btn:hover { border-color: var(--color-primary); color: var(--color-primary-dark); }
+
+/* ---------- Sections ---------- */
+section { padding: var(--space-9) 0; }
+.section-tight { padding: var(--space-7) 0; }
+.section-surface { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--color-primary-dark); background: var(--color-primary-tint);
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); margin-bottom: var(--space-4);
+}
+.eyebrow.teal { color: var(--color-secondary); background: var(--color-success-tint); }
+.section-head { max-width: 680px; margin: 0 0 var(--space-7); }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head p { font-size: var(--text-lg); }
+.grid { display: grid; gap: var(--space-5); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.flex-between { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-surface); border-radius: var(--radius-md);
+  border: 1px solid var(--color-border); overflow: hidden;
+  transition: box-shadow var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+}
+.card:hover { box-shadow: var(--shadow-md); }
+
+/* Value proposition card */
+.value-card { padding: var(--space-6); height: 100%; }
+.value-card .v-icon {
+  width: 52px; height: 52px; border-radius: var(--radius-md);
+  background: var(--color-primary-tint); color: var(--color-primary-dark);
+  display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);
+}
+.value-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+.value-card p { margin: 0; font-size: var(--text-sm); }
+
+/* Property card */
+.property-card { display: flex; flex-direction: column; position: relative; }
+.property-card__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.property-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms var(--ease); }
+.property-card:hover .property-card__media img { transform: scale(1.04); }
+.property-card__badge {
+  position: absolute; top: var(--space-3); left: var(--space-3);
+  background: var(--color-surface); font-size: var(--text-xs); font-weight: 700;
+  padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); color: var(--color-secondary);
+}
+.property-card__badge.furnished { background: var(--color-secondary); color: #fff; }
+.property-card__body { padding: var(--space-4); flex: 1; display: flex; flex-direction: column; gap: var(--space-2); }
+.property-card__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-2); }
+.property-card__title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; margin: 0; }
+.property-card__location { font-size: var(--text-sm); color: var(--color-text-muted); display: flex; align-items: center; gap: var(--space-1); margin: 0; }
+.property-card__meta { display: flex; gap: var(--space-3); font-size: var(--text-xs); color: var(--color-text-muted); flex-wrap: wrap; }
+.property-card__meta span { display: flex; align-items: center; gap: 4px; }
+.property-card__footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: var(--space-2); border-top: 1px solid var(--color-border); }
+.property-card__price { font-weight: 700; color: var(--color-text); }
+.property-card__price small { font-weight: 400; color: var(--color-text-muted); }
+.rating { display: flex; align-items: center; gap: 4px; font-size: var(--text-sm); font-weight: 600; }
+.rating svg { color: var(--color-accent); }
+
+/* ---------- Badges ---------- */
+.badge { display: inline-flex; align-items: center; gap: 4px; font-size: var(--text-xs); font-weight: 700; padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); }
+.badge-success { background: var(--color-success-tint); color: var(--color-success); }
+.badge-accent { background: var(--color-accent-tint); color: #9A6A1E; }
+.badge-neutral { background: var(--color-bg); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: 44px; padding: 0 var(--space-4); border-radius: var(--radius-full);
+  border: 1px solid var(--color-border); background: var(--color-surface);
+  font-size: var(--text-sm); font-weight: 500; cursor: pointer;
+  transition: border-color var(--dur-base) var(--ease), background var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
+}
+.chip:hover { border-color: var(--color-primary); }
+.chip[aria-pressed="true"] { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; }
+
+/* ---------- Forms ---------- */
+.field { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.field label { font-size: var(--text-sm); font-weight: 600; }
+.field .hint { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: -4px; }
+.field .error-text { font-size: var(--text-xs); color: var(--color-danger); margin-top: -2px; display: none; }
+.field.has-error .error-text { display: block; }
+.field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--color-danger); }
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"],
+input[type="date"], input[type="password"], select, textarea {
+  min-height: 44px; padding: 0 var(--space-4);
+  border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: var(--text-base);
+  background: var(--color-surface); color: var(--color-text); width: 100%;
+}
+textarea { padding: var(--space-3) var(--space-4); min-height: 96px; resize: vertical; }
+input:focus, select:focus, textarea:focus { border-color: var(--color-primary); }
+.checkbox-row { display: flex; align-items: flex-start; gap: var(--space-2); min-height: 44px; font-size: var(--text-sm); }
+.checkbox-row input { width: 18px; height: 18px; min-height: auto; accent-color: var(--color-primary); margin-top: 3px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--color-secondary); color: rgba(255,255,255,0.85); padding: var(--space-8) 0 var(--space-5); }
+.site-footer h4 { color: #fff; font-family: var(--font-body); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-4); }
+.site-footer a { color: rgba(255,255,255,0.75); font-size: var(--text-sm); transition: color var(--dur-base) var(--ease); }
+.site-footer a:hover { color: #fff; }
+.footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); margin-top: var(--space-7); padding-top: var(--space-5); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); font-size: var(--text-xs); color: rgba(255,255,255,0.6); }
+
+/* ---------- Utility ---------- */
+.text-center { text-align: center; }
+.text-muted { color: var(--color-text-muted); }
+.mt-0 { margin-top: 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  h1 { font-size: var(--text-4xl); }
+  .nav-links, .nav-actions .btn-outline { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  section { padding: var(--space-7) 0; }
+}
+
+/* Mobile nav drawer */
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 60; background: rgba(36,33,31,0.4); }
+.mobile-nav.open { display: block; }
+.mobile-nav__panel {
+  position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 84vw);
+  background: var(--color-surface); padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-2); box-shadow: var(--shadow-lg);
+}
+.mobile-nav__panel a, .mobile-nav__panel button.mnav-link {
+  min-height: 48px; display: flex; align-items: center;
+  font-size: var(--text-base); font-weight: 600; border-bottom: 1px solid var(--color-border);
+}
+
+/* ===========================================================
+   Page-specific composition
+=========================================================== */
+
+/* Hero */
+.hero { padding: var(--space-8) 0 var(--space-9); background: linear-gradient(180deg, #FCEAE4 0%, var(--color-bg) 62%); }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-7); align-items: center; }
+.hero-copy h1 { margin-bottom: var(--space-4); }
+.hero-copy p.lead { font-size: var(--text-lg); max-width: 48ch; }
+.hero-cta { display: flex; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap; }
+.hero-assurance { display: flex; gap: var(--space-5); margin-top: var(--space-6); flex-wrap: wrap; }
+.hero-assurance div { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); font-weight: 600; color: var(--color-secondary); }
+.hero-assurance svg { color: var(--color-success); flex-shrink: 0; }
+.hero-media { position: relative; }
+.hero-media > img { border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+.hero-float {
+  position: absolute; background: var(--color-surface); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg); padding: var(--space-4) var(--space-5); display: flex; align-items: center; gap: var(--space-3);
+}
+.hero-float.tl { top: -18px; left: -18px; }
+.hero-float.br { bottom: -18px; right: -18px; }
+.hero-float svg { color: var(--color-primary); flex-shrink: 0; }
+.hero-float strong { font-family: var(--font-heading); font-size: 1.1rem; display: block; line-height: 1.1; }
+.hero-float span { font-size: 0.78rem; color: var(--color-text-muted); }
+
+/* Stats strip */
+.stats-strip { display: flex; justify-content: space-around; text-align: center; padding: var(--space-6) 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: var(--space-5); }
+.stats-strip .stat-num { font-family: var(--font-heading); font-size: var(--text-3xl); color: var(--color-secondary); display: block; }
+.stats-strip .stat-label { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* Two-path split */
+.path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.path-card { padding: var(--space-7); border-radius: var(--radius-lg); position: relative; overflow: hidden; }
+.path-card.owner { background: var(--color-secondary); color: #fff; }
+.path-card.owner h3, .path-card.owner p { color: #fff; }
+.path-card.owner p { color: rgba(255,255,255,0.82); }
+.path-card.tenant { background: var(--color-surface); border: 1px solid var(--color-border); }
+.path-card .p-icon { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4); }
+.path-card.owner .p-icon { background: rgba(255,255,255,0.14); color: #fff; }
+.path-card.tenant .p-icon { background: var(--color-primary-tint); color: var(--color-primary-dark); }
+.path-card h3 { font-size: var(--text-2xl); }
+.path-list { list-style: none; padding: 0; margin: 0 0 var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
+.path-list li { display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--text-sm); }
+.path-card.owner .path-list svg { color: var(--color-accent); }
+.path-card.tenant .path-list svg { color: var(--color-success); }
+.path-list svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Steps (owner journey) */
+.steps-grid { counter-reset: step; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+.step-card { position: relative; padding-top: var(--space-7); }
+.step-card::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading); font-weight: 700; font-size: var(--text-lg);
+}
+.step-card h3 { font-size: var(--text-lg); }
+.step-card p { font-size: var(--text-sm); margin: 0; }
+
+/* Furnishing upgrade / feature split */
+.feature-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+.feature-split img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.feature-list { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.feature-list li { display: flex; gap: var(--space-3); align-items: flex-start; }
+.feature-list .f-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--color-accent-tint); color: #9A6A1E; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.feature-list strong { display: block; margin-bottom: 2px; }
+.feature-list span { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* Testimonials */
+.testimonial-card { padding: var(--space-6); }
+.testimonial-card .rating { margin-bottom: var(--space-3); }
+.testimonial-person { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+.testimonial-person img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.testimonial-person strong { font-size: var(--text-sm); display: block; }
+.testimonial-person span { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+/* FAQ accordion */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--color-border); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+  padding: var(--space-5) 0; font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; color: var(--color-text);
+}
+.faq-q svg { flex-shrink: 0; transition: transform var(--dur-base) var(--ease); color: var(--color-primary); }
+.faq-q[aria-expanded="true"] svg { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height var(--dur-base) var(--ease); }
+.faq-a__inner { padding: 0 0 var(--space-5); color: var(--color-text-muted); }
+.faq-item.open .faq-a { max-height: 320px; }
+
+/* Lead form (owner) */
+.lead-section { background: var(--color-secondary); color: #fff; }
+.lead-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: var(--space-8); align-items: center; }
+.lead-copy h2, .lead-copy p { color: #fff; }
+.lead-copy p { color: rgba(255,255,255,0.82); font-size: var(--text-lg); }
+.lead-trust { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.lead-trust li { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); }
+.lead-trust svg { color: var(--color-accent); flex-shrink: 0; }
+.lead-form-card { background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-lg); color: var(--color-text); }
+.lead-form-card h3 { font-size: var(--text-xl); }
+.form-success {
+  display: none; text-align: center; padding: var(--space-6) var(--space-4);
+}
+.form-success.show { display: block; }
+.form-success .s-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--color-success-tint); color: var(--color-success); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.contact-card { padding: var(--space-6); text-align: center; }
+.contact-card .c-icon { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--color-primary-tint); color: var(--color-primary-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4); }
+.contact-card strong { display: block; margin-bottom: var(--space-1); }
+.contact-card a, .contact-card span { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* CTA banner */
+.cta-banner { background: var(--color-primary); border-radius: var(--radius-lg); padding: var(--space-8); color: #fff; text-align: center; }
+.cta-banner h2 { color: #fff; }
+.cta-banner p { color: rgba(255,255,255,0.9); max-width: 54ch; margin: 0 auto var(--space-5); }
+.cta-banner .btn-primary { background: #fff; color: var(--color-primary-dark); }
+.cta-banner .btn-primary:hover { background: var(--color-bg); }
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-media { display: none; }
+  .path-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-split { grid-template-columns: 1fr; }
+  .feature-split .feature-media { order: -1; }
+  .lead-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .stats-strip { gap: var(--space-6); }
+}
+
+/* ===========================================================
+   Owners page
+=========================================================== */
+
+/* Page hero variant */
+.owner-hero { padding: var(--space-8) 0 var(--space-8); background: linear-gradient(180deg, #FCEAE4 0%, var(--color-bg) 70%); }
+
+/* Comparison table: DIY vs broker vs Nestly */
+.compare-wrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.compare-table th, .compare-table td { padding: var(--space-4) var(--space-5); text-align: left; border-bottom: 1px solid var(--color-border); }
+.compare-table thead th { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 700; color: var(--color-text-muted); background: var(--color-bg); }
+.compare-table thead th.col-nestly { color: #fff; background: var(--color-secondary); border-top-right-radius: var(--radius-lg); }
+.compare-table tbody th { font-weight: 600; font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text); width: 34%; }
+.compare-table td { font-size: var(--text-sm); color: var(--color-text-muted); }
+.compare-table td.col-nestly { background: rgba(31, 61, 58, 0.05); color: var(--color-text); font-weight: 600; }
+.compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border-bottom: none; }
+.cmp-yes { color: var(--color-success); display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.cmp-no { color: var(--color-danger); display: inline-flex; align-items: center; gap: 6px; }
+.cmp-mid { color: #9A6A1E; display: inline-flex; align-items: center; gap: 6px; }
+
+/* Numbered detailed steps (vertical) */
+.owner-steps { counter-reset: ostep; max-width: 820px; margin: 0 auto; }
+.owner-step { display: grid; grid-template-columns: 64px 1fr; gap: var(--space-5); padding: var(--space-5) 0; border-bottom: 1px solid var(--color-border); align-items: start; }
+.owner-step:last-child { border-bottom: none; }
+.owner-step .num { counter-increment: ostep; }
+.owner-step .num span {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--color-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: var(--text-xl);
+}
+.owner-step .num span::before { content: counter(ostep); }
+.owner-step h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+.owner-step p { margin: 0; }
+
+/* Earnings / investment callout cards */
+.invest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.invest-card { padding: var(--space-6); text-align: center; }
+.invest-card .big { font-family: var(--font-heading); font-size: var(--text-4xl); color: var(--color-secondary); display: block; margin-bottom: var(--space-2); }
+.invest-card p { margin: 0; font-size: var(--text-sm); }
+
+@media (max-width: 960px) {
+  .invest-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .owner-step { grid-template-columns: 44px 1fr; gap: var(--space-4); }
+  .owner-step .num span { width: 40px; height: 40px; font-size: var(--text-base); }
+}
+
+/* Rentals page */
+.rentals-header { padding: var(--space-6) 0 var(--space-4); border-bottom: 1px solid var(--color-border); }
+.rentals-toolbar { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; margin-top: var(--space-4); }
+.rentals-toolbar .field { margin-bottom: 0; flex: 1; min-width: 220px; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.results-bar { display: flex; justify-content: space-between; align-items: center; margin: var(--space-6) 0 var(--space-5); flex-wrap: wrap; gap: var(--space-3); }
+.empty-state { text-align: center; padding: var(--space-9) var(--space-5); border: 1px dashed var(--color-border); border-radius: var(--radius-md); }
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>
+      <span>Nestly Homes<small>Guaranteed rent</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="owners.html">For owners</a></li>
+      <li><a href="owners.html#how">How it works</a></li>
+      <li><a href="rentals.html" aria-current="page">Browse rentals</a></li>
+      <li><a href="owners.html#faq">FAQ</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="owners.html#list" class="btn btn-outline">List your home</a>
+      <a href="index.html#contact" class="btn btn-primary">Contact us</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" aria-label="Mobile">
+  <div class="mobile-nav__panel">
+    <div class="flex-between">
+      <span class="brand">Nestly Homes</span>
+      <button class="mobile-nav__close icon-btn" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <a href="owners.html">For owners</a>
+    <a href="owners.html#how">How it works</a>
+    <a href="rentals.html">Browse rentals</a>
+    <a href="owners.html#faq">FAQ</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="owners.html#list" class="btn btn-primary btn-block" style="margin-top:12px;">List your home</a>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="container rentals-header">
+    <span class="eyebrow teal">For tenants</span>
+    <h1 style="font-size:var(--text-3xl); margin-bottom:var(--space-2);">Fully-furnished homes to rent</h1>
+    <p style="margin:0; max-width:60ch;">Every home below is furnished, move-in ready and managed by Nestly — one team for your rent, repairs and support.</p>
+
+    <div class="rentals-toolbar">
+      <div class="field">
+        <label for="q" class="visually-hidden">Search by area or city</label>
+        <input type="text" id="q" placeholder="Search by area or city (e.g. Koramangala, Pune)" oninput="applyFilters()">
+      </div>
+      <div class="field" style="flex:0 0 auto; min-width:180px;">
+        <label for="sort" class="visually-hidden">Sort</label>
+        <select id="sort" onchange="applyFilters()">
+          <option value="recommended">Sort: Recommended</option>
+          <option value="rent-asc">Rent: low to high</option>
+          <option value="rent-desc">Rent: high to low</option>
+          <option value="rating">Highest rated</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--space-4);">
+      <div class="filter-chips" id="city-chips" role="group" aria-label="Filter by city" style="margin-bottom:var(--space-2);"></div>
+      <div class="filter-chips" id="type-chips" role="group" aria-label="Filter by home type"></div>
+    </div>
+  </div>
+
+  <div class="container section-tight">
+    <div class="results-bar">
+      <p id="results-count" style="margin:0; font-weight:600;">Loading homes…</p>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="resetFilters()">Clear filters</button>
+    </div>
+    <div class="grid grid-3" id="results-grid" aria-live="polite"></div>
+    <div class="empty-state" id="empty-state" hidden>
+      <h3>No homes match those filters</h3>
+      <p>Try clearing a filter or searching a different area.</p>
+      <button type="button" class="btn btn-primary" onclick="resetFilters()">Clear filters</button>
+    </div>
+  </div>
+
+  <section class="section-surface">
+    <div class="container">
+      <div class="cta-banner" style="background:var(--color-secondary);">
+        <h2 style="color:#fff;">Own a home instead?</h2>
+        <p style="color:rgba(255,255,255,0.85);">List it with Nestly and earn guaranteed rent every month — we furnish, manage and rent it out for you.</p>
+        <a href="owners.html" class="btn btn-primary btn-lg" style="background:#fff; color:var(--color-secondary);">List your home</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <span>© 2026 Nestly Homes. Demo site for illustration purposes.</span>
+    <span>Prototype — not a live booking or payment service.</span>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================
+   Nestly Homes — inline SVG icon set (outline, 24x24, no emoji)
+=========================================================== */
+
+const NESTLY_ICONS = {
+  home: '<path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/>',
+  "map-pin": '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  star: '<polygon points="12 2 15.09 8.63 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.63 12 2"/>',
+  bed: '<path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M2 14h20"/><path d="M6 10V7a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"/><path d="M2 21v-3"/><path d="M22 21v-3"/>',
+  bath: '<path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.5 1V15"/><path d="M2 15h20v2a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/><line x1="6" y1="15" x2="6" y2="19"/><line x1="18" y1="15" x2="18" y2="19"/>',
+  users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  ruler: '<path d="M3 8 8 3l13 13-5 5Z"/><path d="M7 7l1.5 1.5"/><path d="M11 11l1.5 1.5"/><path d="M15 15l1.5 1.5"/>',
+  check: '<polyline points="20 6 9 17 4 12"/>',
+  "check-circle": '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+  shield: '<path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5Z"/>',
+  "shield-check": '<path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5Z"/><polyline points="9 12 11 14 15 10"/>',
+  wallet: '<path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="16" cy="14" r="1.5"/>',
+  "rupee": '<path d="M6 4h12"/><path d="M6 9h12"/><path d="M14 4c2.5 0 4 2 4 4.5S16.5 13 14 13H8l7 7"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+  "trending-up": '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2.4-2.4Z"/>',
+  sofa: '<path d="M4 10V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 12a2 2 0 0 1 2 2v3h16v-3a2 2 0 0 1 2-2 2 2 0 0 0-2 2v-2"/><path d="M4 17v2"/><path d="M20 17v2"/><rect x="2" y="10" width="4" height="6" rx="2"/><rect x="18" y="10" width="4" height="6" rx="2"/><path d="M6 17h12"/>',
+  "file-text": '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>',
+  wifi: '<path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12a11.5 11.5 0 0 1 14 0"/><path d="M8.5 15.5a6.5 6.5 0 0 1 7 0"/><line x1="12" y1="19" x2="12" y2="19.01"/>',
+  wind: '<path d="M3 8h11a3 3 0 1 0-3-3"/><path d="M3 16h15a3 3 0 1 1-3 3"/><path d="M3 12h18"/>',
+  car: '<path d="M5 17h14l1.6-5.4A2 2 0 0 0 18.7 9H5.3a2 2 0 0 0-1.9 2.6Z"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/>',
+  zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  droplet: '<path d="M12 2s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11Z"/>',
+  tv: '<rect x="2" y="7" width="20" height="13" rx="2"/><polyline points="8 3 12 7 16 3"/>',
+  utensils: '<path d="M4 3v7a2 2 0 0 0 2 2h0V3"/><path d="M6 3v18"/><path d="M18 3c-1.5 0-3 1.5-3 4v5h3"/><path d="M18 3v18"/>',
+  dumbbell: '<path d="M6.5 6.5 3 3"/><path d="M17.5 17.5 21 21"/><path d="M9 15 15 9"/><rect x="4" y="12" width="4" height="4" rx="1" transform="rotate(-45 6 14)"/><rect x="16" y="8" width="4" height="4" rx="1" transform="rotate(-45 18 10)"/>',
+  headset: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2Z"/><path d="M20 14a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1a3 3 0 0 1-3 3h-2"/>',
+  phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7A2 2 0 0 1 22 16.9Z"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/>',
+  "message-circle": '<path d="M21 11.5a8.5 8.5 0 0 1-11.9 7.8L3 21l1.7-6.1A8.5 8.5 0 1 1 21 11.5Z"/>',
+  menu: '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>',
+  x: '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+  "chevron-down": '<polyline points="6 9 12 15 18 9"/>',
+  "arrow-right": '<line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/>',
+  sparkles: '<path d="M12 3v4"/><path d="M12 17v4"/><path d="M3 12h4"/><path d="M17 12h4"/><path d="M5.6 5.6l2.8 2.8"/><path d="M15.6 15.6l2.8 2.8"/><path d="M18.4 5.6l-2.8 2.8"/><path d="M8.4 15.6l-2.8 2.8"/>',
+  filter: '<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>',
+  "map": '<polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21 1 6"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/>'
+};
+
+function nestlyIcon(name, size, extraClass) {
+  const body = NESTLY_ICONS[name] || NESTLY_ICONS.home;
+  size = size || 20;
+  const cls = extraClass ? ` class="${extraClass}"` : "";
+  return `<svg${cls} width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}</svg>`;
+}
+
+const NESTLY_AMENITY_ICON = {
+  "Wi-Fi": "wifi",
+  "Air conditioning": "wind",
+  "Modular kitchen": "utensils",
+  "Covered parking": "car",
+  "Power backup": "zap",
+  "24×7 water": "droplet",
+  "Smart TV": "tv",
+  "Washing machine": "wrench",
+  "Gym access": "dumbbell",
+  "Housekeeping": "sparkles",
+  "Fully furnished": "sofa",
+  "Balcony": "home",
+  "Lift": "arrow-right",
+  "Security": "shield"
+};
+
+</script>
+<script>
+/* ===========================================================
+   Nestly Homes — sample data (mock, demo only)
+   Indian context: rupee pricing, Indian cities.
+   These are managed, fully-furnished homes we rent out to tenants.
+=========================================================== */
+
+const NESTLY_RENTALS = [
+  {
+    id: "n1",
+    title: "Sunlit 2BHK near Koramangala",
+    type: "2 BHK",
+    city: "Bengaluru",
+    area: "Koramangala",
+    rent: 42000,
+    deposit: 168000,
+    rating: 4.9,
+    reviews: 46,
+    beds: 2, baths: 2, sqft: 1150,
+    seed: "nh-blr-1",
+    badge: "Fully furnished",
+    available: "Immediate",
+    description: "A bright, fully-furnished 2BHK in the heart of Koramangala, walking distance to cafes, co-working spaces and the metro. Managed end-to-end by Nestly.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Covered parking", "Power backup", "Smart TV", "Housekeeping"]
+  },
+  {
+    id: "n2",
+    title: "Premium 3BHK in Gachibowli",
+    type: "3 BHK",
+    city: "Hyderabad",
+    area: "Gachibowli",
+    rent: 55000,
+    deposit: 220000,
+    rating: 4.8,
+    reviews: 33,
+    beds: 3, baths: 3, sqft: 1650,
+    seed: "nh-hyd-1",
+    badge: "Fully furnished",
+    available: "Immediate",
+    description: "Spacious family home in a gated community close to the IT corridor, with clubhouse, gym and 24×7 security. Fresh interiors by Nestly.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Covered parking", "Power backup", "Gym access", "Security"]
+  },
+  {
+    id: "n3",
+    title: "Cozy 1BHK studio in Indiranagar",
+    type: "1 BHK",
+    city: "Bengaluru",
+    area: "Indiranagar",
+    rent: 32000,
+    deposit: 128000,
+    rating: 4.7,
+    reviews: 58,
+    beds: 1, baths: 1, sqft: 720,
+    seed: "nh-blr-2",
+    badge: "Fully furnished",
+    available: "From 1 Aug",
+    description: "A smartly designed 1BHK for young professionals, steps from Indiranagar's restaurants and pubs. Move-in ready with all essentials.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Smart TV", "Washing machine", "24×7 water"]
+  },
+  {
+    id: "n4",
+    title: "Sea-breeze 2BHK in Adyar",
+    type: "2 BHK",
+    city: "Chennai",
+    area: "Adyar",
+    rent: 38000,
+    deposit: 152000,
+    rating: 4.8,
+    reviews: 29,
+    beds: 2, baths: 2, sqft: 1080,
+    seed: "nh-chn-1",
+    badge: "Fully furnished",
+    available: "Immediate",
+    description: "Airy 2BHK a short drive from the beach, in a quiet, well-connected neighbourhood. Freshly furnished and professionally maintained.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Covered parking", "Balcony", "Housekeeping"]
+  },
+  {
+    id: "n5",
+    title: "Modern 3BHK in Baner",
+    type: "3 BHK",
+    city: "Pune",
+    area: "Baner",
+    rent: 46000,
+    deposit: 184000,
+    rating: 4.9,
+    reviews: 21,
+    beds: 3, baths: 2, sqft: 1450,
+    seed: "nh-pnq-1",
+    badge: "Fully furnished",
+    available: "From 15 Aug",
+    description: "Contemporary 3BHK close to the Mumbai-Bengaluru highway and Baner's tech parks, in a family-friendly society with amenities.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Covered parking", "Power backup", "Lift", "Gym access"]
+  },
+  {
+    id: "n6",
+    title: "Elegant 2BHK in Powai",
+    type: "2 BHK",
+    city: "Mumbai",
+    area: "Powai",
+    rent: 68000,
+    deposit: 272000,
+    rating: 4.7,
+    reviews: 37,
+    beds: 2, baths: 2, sqft: 980,
+    seed: "nh-mum-1",
+    badge: "Fully furnished",
+    available: "Immediate",
+    description: "Lake-facing 2BHK in a premium Powai tower with skyline views, minutes from Hiranandani. Turnkey furnished by Nestly.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Covered parking", "Power backup", "Security", "Balcony"]
+  },
+  {
+    id: "n7",
+    title: "Bright 1BHK in HSR Layout",
+    type: "1 BHK",
+    city: "Bengaluru",
+    area: "HSR Layout",
+    rent: 29000,
+    deposit: 116000,
+    rating: 4.6,
+    reviews: 64,
+    beds: 1, baths: 1, sqft: 680,
+    seed: "nh-blr-3",
+    badge: "Fully furnished",
+    available: "Immediate",
+    description: "Compact, well-lit 1BHK ideal for a working professional, in the startup hub of HSR Layout with everything you need within reach.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Smart TV", "24×7 water", "Housekeeping"]
+  },
+  {
+    id: "n8",
+    title: "Spacious 3BHK in Whitefield",
+    type: "3 BHK",
+    city: "Bengaluru",
+    area: "Whitefield",
+    rent: 51000,
+    deposit: 204000,
+    rating: 4.8,
+    reviews: 26,
+    beds: 3, baths: 3, sqft: 1720,
+    seed: "nh-blr-4",
+    badge: "Fully furnished",
+    available: "From 1 Aug",
+    description: "Large family 3BHK near ITPL and top schools, in a gated community with pool and clubhouse. Move-in ready interiors.",
+    amenities: ["Fully furnished", "Wi-Fi", "Air conditioning", "Modular kitchen", "Covered parking", "Power backup", "Gym access", "Security"]
+  }
+];
+
+const NESTLY_CITIES = ["Bengaluru", "Hyderabad", "Chennai", "Pune", "Mumbai"];
+
+function nestlyImg(seed, w, h) {
+  return `https://picsum.photos/seed/${seed}/${w}/${h}`;
+}
+function nestlyGetRental(id) {
+  return NESTLY_RENTALS.find(p => p.id === id);
+}
+function nestlyRupee(n) {
+  return "₹" + Number(n).toLocaleString("en-IN");
+}
+
+</script>
+<script>
+/* ===========================================================
+   Nestly Homes — shared behavior
+   nav drawer, rental card render, FAQ accordion, form validation
+=========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileNav();
+  initFaq();
+});
+
+function initMobileNav() {
+  const toggle = document.querySelector(".nav-toggle");
+  const drawer = document.querySelector(".mobile-nav");
+  if (!toggle || !drawer) return;
+  const closeBtn = drawer.querySelector(".mobile-nav__close");
+
+  const open = () => {
+    drawer.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    const first = drawer.querySelector("a, button");
+    if (first) first.focus();
+  };
+  const close = () => {
+    drawer.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.focus();
+  };
+  toggle.addEventListener("click", open);
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  drawer.addEventListener("click", (e) => { if (e.target === drawer) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer.classList.contains("open")) close();
+  });
+}
+
+function initFaq() {
+  document.querySelectorAll(".faq-q").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      item.classList.toggle("open", !expanded);
+    });
+  });
+}
+
+/**
+ * Renders a furnished-rental card.
+ */
+function nestlyRenderRentalCard(p) {
+  return `
+    <article class="card property-card" data-id="${p.id}" data-type="${p.type}" data-city="${p.city}" data-rent="${p.rent}">
+      <div class="property-card__media">
+        <img src="${nestlyImg(p.seed, 480, 360)}" alt="Interior of ${p.title}, ${p.area}, ${p.city}" loading="lazy" width="480" height="360">
+        <span class="property-card__badge furnished">${p.badge}</span>
+      </div>
+      <div class="property-card__body">
+        <div class="property-card__top">
+          <h3 class="property-card__title">${p.title}</h3>
+          <span class="rating">${nestlyIcon("star", 14)} ${p.rating.toFixed(1)}</span>
+        </div>
+        <p class="property-card__location">${nestlyIcon("map-pin", 14)} ${p.area}, ${p.city}</p>
+        <div class="property-card__meta">
+          <span>${nestlyIcon("bed", 14)} ${p.beds} bed${p.beds > 1 ? "s" : ""}</span>
+          <span>${nestlyIcon("bath", 14)} ${p.baths} bath${p.baths > 1 ? "s" : ""}</span>
+          <span>${nestlyIcon("ruler", 14)} ${p.sqft} sq.ft</span>
+        </div>
+        <div class="property-card__footer">
+          <span class="property-card__price">${nestlyRupee(p.rent)} <small>/ month</small></span>
+          <span class="badge badge-success">${p.available}</span>
+        </div>
+        <button type="button" class="btn btn-outline btn-block btn-sm" style="margin-top:8px;" onclick="nestlyEnquire('${p.id}')">Enquire about this home</button>
+      </div>
+    </article>
+  `;
+}
+
+function nestlyEnquire(id) {
+  const p = nestlyGetRental(id);
+  const name = p ? p.title : "this home";
+  alert(`Thanks for your interest in "${name}"!\n\nThis is a demo — in the live site this would open an enquiry form or send your details to the Nestly team. Call +91 98765 43210 or email hello@nestlyhomes.in to book a viewing.`);
+}
+
+/* Generic required-field validator used by the owner lead form. */
+function nestlySetFieldError(field, hasError) {
+  field.classList.toggle("has-error", hasError);
+}
+
+</script>
+<script>
+  const activeCities = new Set();
+  const activeTypes = new Set();
+
+  // Build city + type chips
+  const cityChips = document.getElementById('city-chips');
+  NESTLY_CITIES.forEach(c => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.setAttribute('aria-pressed', 'false');
+    b.dataset.city = c; b.textContent = c;
+    b.addEventListener('click', () => toggleSet(b, activeCities, c));
+    cityChips.appendChild(b);
+  });
+  const typeChips = document.getElementById('type-chips');
+  ['1 BHK', '2 BHK', '3 BHK'].forEach(t => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.setAttribute('aria-pressed', 'false');
+    b.dataset.type = t; b.textContent = t;
+    b.addEventListener('click', () => toggleSet(b, activeTypes, t));
+    typeChips.appendChild(b);
+  });
+
+  function toggleSet(btn, set, val) {
+    const pressed = btn.getAttribute('aria-pressed') === 'true';
+    btn.setAttribute('aria-pressed', String(!pressed));
+    if (pressed) set.delete(val); else set.add(val);
+    applyFilters();
+  }
+
+  function resetFilters() {
+    activeCities.clear(); activeTypes.clear();
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+    document.getElementById('q').value = '';
+    document.getElementById('sort').value = 'recommended';
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    const sort = document.getElementById('sort').value;
+    let results = NESTLY_RENTALS.filter(p => {
+      if (q && !(p.title.toLowerCase().includes(q) || p.city.toLowerCase().includes(q) || p.area.toLowerCase().includes(q))) return false;
+      if (activeCities.size && !activeCities.has(p.city)) return false;
+      if (activeTypes.size && !activeTypes.has(p.type)) return false;
+      return true;
+    });
+    if (sort === 'rent-asc') results.sort((a, b) => a.rent - b.rent);
+    else if (sort === 'rent-desc') results.sort((a, b) => b.rent - a.rent);
+    else if (sort === 'rating') results.sort((a, b) => b.rating - a.rating);
+
+    const grid = document.getElementById('results-grid');
+    const empty = document.getElementById('empty-state');
+    document.getElementById('results-count').textContent =
+      `${results.length} home${results.length === 1 ? '' : 's'} available`;
+    grid.innerHTML = results.map(nestlyRenderRentalCard).join('');
+    empty.hidden = results.length > 0;
+    grid.style.display = results.length ? '' : 'none';
+  }
+
+  // Prefill city from ?city=
+  (function initFromQuery() {
+    const city = new URLSearchParams(window.location.search).get('city');
+    if (city) {
+      const chip = document.querySelector(`[data-city="${city}"]`);
+      if (chip) { chip.setAttribute('aria-pressed', 'true'); activeCities.add(city); }
+    }
+    applyFilters();
+  })();
+</script>
+</body>
+</html>
