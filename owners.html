@@ -1378,7 +1378,8 @@ function nestlySetFieldError(field, hasError) {
 
   // Lead form validation
   const form = document.getElementById('lead-form');
-  form.addEventListener('submit', (e) => {
+  const WEB3FORMS_KEY = '698f709f-4553-4393-9bc4-0d7f1c09c4ca';
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let valid = true;
     const checks = [
@@ -1408,6 +1409,42 @@ function nestlySetFieldError(field, hasError) {
       if (firstErr) firstErr.focus();
       return;
     }
+
+    // Send the lead to Web3Forms (emails you each submission)
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const origBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'New owner lead — Nestly Homes',
+      from_name: 'Nestly Homes website',
+      name: document.getElementById('l-name').value.trim(),
+      phone: document.getElementById('l-phone').value.trim(),
+      city: document.getElementById('l-city').value,
+      property_type: document.getElementById('l-type').value,
+      note: document.getElementById('l-note').value.trim() || '—',
+      submitted_from: location.href
+    };
+    const emailVal = document.getElementById('l-email').value.trim();
+    if (emailVal) payload.email = emailVal;
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Submission failed');
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = origBtnText;
+      alert('Sorry — something went wrong sending your details. Please try again, or call us at +91 98765 43210.');
+      return;
+    }
+
     const name = document.getElementById('l-name').value.trim().split(' ')[0];
     document.getElementById('lead-success-copy').textContent =
       `Thanks ${name}! We've received your details and our team will be in touch within 24 hours with your free rent estimate.`;
