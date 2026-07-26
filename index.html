@@ -1323,6 +1323,7 @@ function nestlySetFieldError(field, hasError) {
   // Lead form validation
   const form = document.getElementById('lead-form');
   const WEB3FORMS_KEY = '698f709f-4553-4393-9bc4-0d7f1c09c4ca';
+  const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyXnCQO3Kp3YN3uO0DlxZ3z_zmaBxO0uGnhNy3u67yfB7SUf2gV7EdK-xgC9Bm-PAjX1Q/exec';
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let valid = true;
@@ -1374,6 +1375,9 @@ function nestlySetFieldError(field, hasError) {
     };
     const emailVal = document.getElementById('l-email').value.trim();
     if (emailVal) payload.email = emailVal;
+
+    // Also log to Google Sheet (best-effort, won't block email delivery)
+    fetch(GOOGLE_SHEET_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) }).catch(() => {});
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
